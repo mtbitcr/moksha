@@ -49,7 +49,7 @@ use std::{fs, thread};
 use tracing::log::error;
 use url::Url;
 
-pub const MINT_URL: &str = "https://moksha.minibill.tech:3338";
+pub const MINT_URL: &str = "https://moksha.minibill.tech";
 
 #[utoipa::path(
         post,
