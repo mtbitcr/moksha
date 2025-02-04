@@ -688,7 +688,11 @@ async fn generate_mint_fee(amount: Amount, mut mint: Mint, bill_id: String) -> S
         .collect::<Vec<Proof>>()
         .into();
 
-    let tokens: TokenV3 = (Url::parse(MINT_URL).expect("Invalid url"), CrSat, proofs).into();
+    let bill_mint_path = format!("/{}/cr-sat", &bill_id);
+    let token_mint_url =
+        Url::parse(&format!("{}{}",MINT_URL, bill_mint_path)).expect("Invalid url");
+
+    let tokens: TokenV3 = (token_mint_url, CrSat, proofs).into();
     let token = tokens.serialize(Option::from(CrSat)).unwrap();
     token
 }
